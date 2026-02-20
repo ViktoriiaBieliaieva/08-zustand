@@ -17,7 +17,21 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Note Hub',
-  description: 'Created by GoIT',
+  description: 'Notes app to create, edit, delete, and search notes effortlessly.',
+  openGraph: {
+    url: 'https://08-zustand-kappa-coral.vercel.app/',
+    title: 'Note Hub',
+    description:
+      'Create, edit, delete, and search notes effortlessly. A clean and simple app to keep your ideas organized and always within reach.',
+    images: [
+      {
+        url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'note image',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
