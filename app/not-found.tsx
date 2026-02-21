@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Page Not Found',
   description: 'The requested page could not be found. Please return to the homepage.',
   openGraph: {
-    url: 'https://08-zustand-kappa-coral.vercel.app/not-found.tsx',
+    url: 'https://08-zustand-kappa-coral.vercel.app/404',
     title: 'Page Not Found',
     description: 'The requested page could not be found. Please return to the homepage.',
     images: [
