@@ -1,8 +1,6 @@
 'use client';
 
 import Loading from '@/app/loading';
-import Modal from '@/components/Modal/Modal';
-import NoteForm from '@/components/NoteForm/NoteForm';
 import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
 import SearchBox from '@/components/SearchBox/SearchBox';
@@ -13,6 +11,7 @@ import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDebouncedCallback } from 'use-debounce';
 import css from './NotesPage.module.css';
+import Link from 'next/link';
 
 interface NotesClientByTagProps {
   tag: string;
@@ -21,7 +20,6 @@ interface NotesClientByTagProps {
 export default function NotesClientByTag({ tag }: NotesClientByTagProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
 
   const { data, isLoading, isError } = useQuery({
@@ -36,9 +34,6 @@ export default function NotesClientByTag({ tag }: NotesClientByTagProps) {
     setSearchQuery(value);
     setPage(1);
   }, 300);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     if (isError) {
@@ -60,14 +55,7 @@ export default function NotesClientByTag({ tag }: NotesClientByTagProps) {
         {data && data.totalPages > 1 && (
           <Pagination totalPages={data.totalPages} setPage={setPage} page={page} />
         )}
-        <button onClick={openModal} className={css.button}>
-          Create note +
-        </button>
-        {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <NoteForm onClose={closeModal} />
-          </Modal>
-        )}
+        <Link href="/notes/action/create">Create note +</Link>
       </header>
       {isLoading && <Loading />}
 

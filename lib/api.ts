@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type Note from '../types/note';
-import type { NoteId, NoteTag } from '../types/note';
+import type { NewNoteData, NoteId, NoteTag } from '../types/note';
 
 const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
@@ -39,7 +39,7 @@ export async function deleteNote(id: NoteId) {
   return data;
 }
 
-export async function createNote(noteData: Pick<Note, 'title' | 'content' | 'tag'>) {
+export async function createNote(noteData: NewNoteData) {
   const { data } = await axios.post<Note>('/notes', noteData, {
     headers: {
       Authorization: `Bearer ${myKey}`,

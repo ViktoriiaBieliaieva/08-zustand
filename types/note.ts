@@ -7,6 +7,12 @@ export default interface Note {
   tag: NoteTag;
 }
 
+export interface NewNoteData {
+  title: string;
+  content: string;
+  tag: string;
+}
+
 export type NoteTag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 
 export type NoteId = Note['id'];
